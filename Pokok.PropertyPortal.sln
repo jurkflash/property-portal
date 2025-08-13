@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokok.PropertyPortal.Domain", "src\Pokok.PropertyPortal.Domain\Pokok.PropertyPortal.Domain.csproj", "{7CB20E77-86CB-2362-04CD-7F9E21AD91C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokok.PropertyPortal.Application", "src\Pokok.PropertyPortal.Application\Pokok.PropertyPortal.Application.csproj", "{811F88BE-74FA-4888-B569-DE85E19114D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CB20E77-86CB-2362-04CD-7F9E21AD91C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB20E77-86CB-2362-04CD-7F9E21AD91C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB20E77-86CB-2362-04CD-7F9E21AD91C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB20E77-86CB-2362-04CD-7F9E21AD91C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{811F88BE-74FA-4888-B569-DE85E19114D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{811F88BE-74FA-4888-B569-DE85E19114D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{811F88BE-74FA-4888-B569-DE85E19114D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{811F88BE-74FA-4888-B569-DE85E19114D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F385DD5F-70A4-4389-A35E-13EB1E60633B}
+	EndGlobalSection
+EndGlobal

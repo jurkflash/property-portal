@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <!-- Enable central package management, https://learn.microsoft.com/en-us/nuget/consume-packages/Central-Package-Management -->
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Pokok.BuildingBlocks.Domain" Version="1.2.0-preview.24" />
+    <PackageVersion Include="Pokok.BuildingBlocks.Persistence" Version="1.2.0-preview.24" />
+  </ItemGroup>
+</Project>
