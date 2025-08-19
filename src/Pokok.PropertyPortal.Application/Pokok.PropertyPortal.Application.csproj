@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+	<PackageReference Include="Pokok.BuildingBlocks.Cqrs" />
+	<PackageReference Include="Pokok.BuildingBlocks.Domain" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pokok.PropertyPortal.Domain\Pokok.PropertyPortal.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

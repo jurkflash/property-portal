@@ -1,24 +1,24 @@
 ﻿using Pokok.BuildingBlocks.Domain.Abstractions;
+using Pokok.BuildingBlocks.Domain.Exceptions;
 using Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects;
-using Pokok.PropertyPortal.Domain.Common;
-using Pokok.PropertyPortal.Domain.Enums;
+using Pokok.PropertyPortal.Domain.Parties;
 
 namespace Pokok.PropertyPortal.Domain.Residents
 {
     public class Resident : Entity<ResidentId>
     {
-        public PersonName Name { get; private set; }
-        public Email Email { get; private set; }
+        public Party Party { get; private set; }
         public PhoneNumber? Phone { get; private set; }
         public ResidentRole Role { get; private set; }
 
-        public Resident(ResidentId id, PersonName name, Email email, ResidentRole role, PhoneNumber? phone = null)
+        private Resident() { } // For EF Core
+
+        public Resident(ResidentId id, Party party, ResidentRole role, PhoneNumber? phone = null)
         : base(id)
         {
-            Name = name ?? throw new DomainException("Resident name is required.");
-            Email = email ?? throw new DomainException("Resident email is required.");
+            Party = party ?? throw new DomainException("Party is required.");
             Role = role;
-            Phone = phone; // optional
+            Phone = phone;
         }
     }
 }

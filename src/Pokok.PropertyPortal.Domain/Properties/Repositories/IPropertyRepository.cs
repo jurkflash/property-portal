@@ -1,7 +1,8 @@
 ﻿using Pokok.BuildingBlocks.Persistence.Abstractions;
-using Pokok.PropertyPortal.Domain.Properties;
+using Pokok.PropertyPortal.Domain.Properties.Aggregates;
+using Pokok.PropertyPortal.Domain.Properties.Entities;
 
-namespace Pokok.PropertyPortal.Domain.Repositories
+namespace Pokok.PropertyPortal.Domain.Properties.Repositories
 {
     public interface IPropertyRepository : IRepository<Property>
     {

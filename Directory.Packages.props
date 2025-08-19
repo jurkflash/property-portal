@@ -4,7 +4,16 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Pokok.BuildingBlocks.Domain" Version="1.2.0-preview.24" />
-    <PackageVersion Include="Pokok.BuildingBlocks.Persistence" Version="1.2.0-preview.24" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
+    <PackageVersion Include="Pokok.BuildingBlocks.Domain" Version="1.2.0-preview.25" />
+    <PackageVersion Include="Pokok.BuildingBlocks.Cqrs" Version="1.2.0-preview.25" />
+    <PackageVersion Include="Pokok.BuildingBlocks.Persistence" Version="1.2.0-preview.25" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.18" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.18" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
   </ItemGroup>
 </Project>

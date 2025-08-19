@@ -1,4 +1,4 @@
-﻿namespace Pokok.PropertyPortal.Domain.Enums
+﻿namespace Pokok.PropertyPortal.Domain.Residents
 {
     public enum ResidentRole
     {

@@ -10,5 +10,7 @@ namespace Pokok.PropertyPortal.Domain.Residents
             if (value == Guid.Empty)
                 throw new DomainException("ResidentId cannot be empty.");
         }
+
+        public static ResidentId New() => new ResidentId(Guid.NewGuid());
     }
 }

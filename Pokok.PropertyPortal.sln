@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokok.PropertyPortal.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokok.PropertyPortal.Application", "src\Pokok.PropertyPortal.Application\Pokok.PropertyPortal.Application.csproj", "{811F88BE-74FA-4888-B569-DE85E19114D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokok.PropertyPortal.Infrastructure", "src\Pokok.PropertyPortal.Infrastructure\Pokok.PropertyPortal.Infrastructure.csproj", "{DA1AC4D3-8427-4824-A0FF-62B902DFA4E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokok.PropertyPortal.Api", "src\Pokok.PropertyPortal.Api\Pokok.PropertyPortal.Api.csproj", "{7E404D84-B16B-40D8-B308-C673CC41AF5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{811F88BE-74FA-4888-B569-DE85E19114D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{811F88BE-74FA-4888-B569-DE85E19114D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{811F88BE-74FA-4888-B569-DE85E19114D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1AC4D3-8427-4824-A0FF-62B902DFA4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1AC4D3-8427-4824-A0FF-62B902DFA4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1AC4D3-8427-4824-A0FF-62B902DFA4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1AC4D3-8427-4824-A0FF-62B902DFA4E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E404D84-B16B-40D8-B308-C673CC41AF5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E404D84-B16B-40D8-B308-C673CC41AF5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E404D84-B16B-40D8-B308-C673CC41AF5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E404D84-B16B-40D8-B308-C673CC41AF5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
