@@ -20,5 +20,9 @@ namespace Pokok.PropertyPortal.Domain.Residents
             Role = role;
             Phone = phone;
         }
+        public void UpdateRole(ResidentRole newRole)
+        {
+            Role = newRole;
+        }
     }
 }

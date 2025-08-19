@@ -35,23 +35,10 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurati
                 a.Property(p => p.Country).HasMaxLength(100);
             });
 
-            // Map Units collection using the backing field
-            builder.OwnsMany(typeof(PropertyUnit), "_units", u =>
-            {
-                u.WithOwner().HasForeignKey("PropertyId");
-                u.Property<Guid>("Id"); // shadow key
-                u.HasKey("Id");
-
-                u.Property<Guid>(nameof(PropertyId)); // optional, explicit FK
-
-                // Map UnitNumber value object inside PropertyUnit
-                u.OwnsOne(typeof(UnitNumber), "UnitNumber", un =>
-                {
-                    un.Property("Value").HasColumnName("UnitNumber").IsRequired().HasMaxLength(50);
-                });
-
-                // Map other properties in PropertyUnit if needed
-            });
+            builder.HasMany(p => p.Units)
+               .WithOne()
+               .HasForeignKey("PropertyId")
+               .OnDelete(DeleteBehavior.Cascade);
 
             // Optional: map table name
             builder.ToTable("Properties");

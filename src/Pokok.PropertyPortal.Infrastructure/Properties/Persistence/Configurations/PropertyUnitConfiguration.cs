@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Pokok.PropertyPortal.Domain.Properties;
 using Pokok.PropertyPortal.Domain.Properties.Entities;
-using Pokok.PropertyPortal.Domain.Residents;
 
 namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurations
 {
@@ -12,14 +10,17 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurati
         {
             builder.HasKey(u => u.Id);
 
-            builder.Property(u => u.UnitNumber)
-                .HasConversion(un => un.Value, v => new UnitNumber(v))
-                .IsRequired();
+            builder.OwnsOne(u => u.UnitNumber, un =>
+            {
+                un.Property(x => x.Value).HasColumnName("UnitNumber").IsRequired();
+            });
 
-            // One-to-many Unit -> Residents
-            builder.HasMany(typeof(Resident), "_residents")
+            builder.HasMany(u => u.Residents)
                    .WithOne()
-                   .HasForeignKey("UnitId");
+                   .HasForeignKey("UnitId")
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            builder.ToTable("PropertyUnits");
         }
     }
 }

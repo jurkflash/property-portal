@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Pokok.PropertyPortal.Domain.Parties;
 using Pokok.PropertyPortal.Domain.Properties.Aggregates;
 using Pokok.PropertyPortal.Domain.Properties.Entities;
 using Pokok.PropertyPortal.Domain.Residents;
@@ -13,23 +14,17 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence
         {
         }
 
-        // Aggregate roots
-        public DbSet<Property> Properties { get; set; } = default!;
-        public DbSet<PropertyUnit> PropertyUnits { get; set; } = default!;
-        public DbSet<Resident> Residents { get; set; } = default!;
+        public DbSet<Property> Properties => Set<Property>();
+        public DbSet<PropertyUnit> PropertyUnits => Set<PropertyUnit>();
+        public DbSet<Resident> Residents => Set<Resident>();
+        public DbSet<Party> Parties => Set<Party>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
-            // Configure Property aggregate
             modelBuilder.ApplyConfiguration(new PropertyConfiguration());
-
-            // Configure Unit aggregate/entity
             modelBuilder.ApplyConfiguration(new PropertyUnitConfiguration());
-
-            // Configure Resident aggregate/entity
             modelBuilder.ApplyConfiguration(new ResidentConfiguration());
+            modelBuilder.ApplyConfiguration(new PartyConfiguration());
         }
     }
 }

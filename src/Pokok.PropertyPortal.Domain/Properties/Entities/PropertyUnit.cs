@@ -34,5 +34,12 @@ namespace Pokok.PropertyPortal.Domain.Properties.Entities
                ?? throw new DomainException($"Party '{partyId}' not found in unit {UnitNumber.Value}.");
             _residents.Remove(existing);
         }
+
+        public void UpdateResidentRole(PartyId partyId, ResidentRole newRole)
+        {
+            var resident = _residents.FirstOrDefault(r => r.Party.Id == partyId)
+                           ?? throw new DomainException($"Party '{partyId}' not found in unit {UnitNumber.Value}.");
+            resident.UpdateRole(newRole);
+        }
     }
 }
