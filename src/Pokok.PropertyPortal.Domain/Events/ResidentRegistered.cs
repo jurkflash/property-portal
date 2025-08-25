@@ -4,7 +4,7 @@ using Pokok.PropertyPortal.Domain.Residents;
 
 namespace Pokok.PropertyPortal.Domain.Events
 {
-    public sealed record ResidentRegisteredDomainEvent(PropertyId PropertyId, PropertyUnitId UnitId, ResidentId ResidentId) : IDomainEvent
+    public sealed record ResidentRegistered(PropertyId PropertyId, PropertyUnitId UnitId, ResidentId ResidentId) : IDomainEvent
     {
         public DateTime OccurredOn => DateTime.UtcNow;
     }
