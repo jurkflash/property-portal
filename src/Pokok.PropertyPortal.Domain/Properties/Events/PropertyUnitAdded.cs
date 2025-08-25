@@ -3,7 +3,7 @@ using Pokok.PropertyPortal.Domain.Properties.Entities;
 
 namespace Pokok.PropertyPortal.Domain.Properties.Events
 {
-    public sealed record UnitAddedDomainEvent(PropertyId PropertyId, PropertyUnitId UnitId, string UnitNumber) : IDomainEvent
+    public sealed record PropertyUnitAdded(PropertyId PropertyId, PropertyUnitId UnitId, string UnitNumber) : IDomainEvent
     {
         public DateTime OccurredOn => DateTime.UtcNow;
     }

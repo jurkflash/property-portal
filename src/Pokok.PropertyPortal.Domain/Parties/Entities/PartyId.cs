@@ -1,7 +1,7 @@
 ﻿using Pokok.BuildingBlocks.Domain.Abstractions;
 using Pokok.BuildingBlocks.Domain.Exceptions;
 
-namespace Pokok.PropertyPortal.Domain.Parties
+namespace Pokok.PropertyPortal.Domain.Parties.Entities
 {
     public sealed class PartyId : EntityId<Guid>
     {

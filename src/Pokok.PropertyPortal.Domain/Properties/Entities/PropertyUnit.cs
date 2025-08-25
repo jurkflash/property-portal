@@ -1,6 +1,7 @@
 ﻿using Pokok.BuildingBlocks.Domain.Abstractions;
 using Pokok.BuildingBlocks.Domain.Exceptions;
-using Pokok.PropertyPortal.Domain.Parties;
+using Pokok.PropertyPortal.Domain.Parties.Aggregates;
+using Pokok.PropertyPortal.Domain.Parties.Entities;
 using Pokok.PropertyPortal.Domain.Properties.ValueObjects;
 using Pokok.PropertyPortal.Domain.Residents;
 

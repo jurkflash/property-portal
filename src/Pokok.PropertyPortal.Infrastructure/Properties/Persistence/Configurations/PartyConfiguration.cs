@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Pokok.PropertyPortal.Domain.Parties;
+using Pokok.PropertyPortal.Domain.Parties.Aggregates;
 
 namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurations
 {

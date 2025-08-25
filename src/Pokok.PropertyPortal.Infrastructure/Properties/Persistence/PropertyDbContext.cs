@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Pokok.PropertyPortal.Domain.Parties;
+using Pokok.PropertyPortal.Domain.Parties.Aggregates;
 using Pokok.PropertyPortal.Domain.Properties.Aggregates;
 using Pokok.PropertyPortal.Domain.Properties.Entities;
 using Pokok.PropertyPortal.Domain.Residents;

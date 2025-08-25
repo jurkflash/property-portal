@@ -1,4 +1,4 @@
-﻿namespace Pokok.PropertyPortal.Domain.Parties
+﻿namespace Pokok.PropertyPortal.Domain.Parties.Enums
 {
     public enum PartyType
     {
