@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence
+namespace Pokok.PropertyPortal.Infrastructure.Outbox.Persistence
 {
-    public class PropertyDbContextFactory : IDesignTimeDbContextFactory<PropertyDbContext>
+    public class PropertyOutboxDbContextFactory : IDesignTimeDbContextFactory<PropertyOutboxDbContext>
     {
-        public PropertyDbContext CreateDbContext(string[] args)
+        public PropertyOutboxDbContext CreateDbContext(string[] args)
         {
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
 
@@ -20,12 +20,12 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence
 
             var connectionString = config.GetConnectionString("PropertyConnection");
 
-            var optionsBuilder = new DbContextOptionsBuilder<PropertyDbContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<PropertyOutboxDbContext>();
             optionsBuilder.UseNpgsql(connectionString, b =>
             {
                 b.MigrationsAssembly("Pokok.PropertyPortal.Infrastructure");
             });
-            return new PropertyDbContext(optionsBuilder.Options);
+            return new PropertyOutboxDbContext(optionsBuilder.Options);
         }
     }
 }

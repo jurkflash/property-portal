@@ -14,6 +14,8 @@ namespace Pokok.PropertyPortal.Domain.Properties.Entities
         public UnitNumber UnitNumber { get; private set; }
         public IReadOnlyCollection<Resident> Residents => _residents.AsReadOnly();
 
+        private PropertyUnit() { } // For EF Core
+
         public PropertyUnit(PropertyUnitId id, UnitNumber unitNumber) : base(id)
         {
             UnitNumber = unitNumber;

@@ -3,6 +3,7 @@ using Pokok.BuildingBlocks.Domain.Exceptions;
 using Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects;
 using Pokok.PropertyPortal.Domain.Parties.Entities;
 using Pokok.PropertyPortal.Domain.Parties.Enums;
+using Pokok.PropertyPortal.Domain.Parties.Events;
 using Pokok.PropertyPortal.Domain.Parties.ValueObjects;
 
 namespace Pokok.PropertyPortal.Domain.Parties.Aggregates
@@ -27,7 +28,7 @@ namespace Pokok.PropertyPortal.Domain.Parties.Aggregates
         public static Party Register(PartyId id, PartyName name, PartyType type, Email email, PhoneNumber? phone = null)
         {
             var party = new Party(id, name, type, email, phone);
-            party.AddDomainEvent(new PartyRegistered(name, email, type));
+            party.AddDomainEvent(new PartyRegistered(name, type, email));
             return party;
         }
 

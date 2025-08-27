@@ -16,11 +16,14 @@
   	<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" />
   	<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" />
   	<PackageReference Include="Microsoft.Extensions.Configuration.Json" />
-	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />	  
-  	<PackageReference Include="Microsoft.Extensions.Configuration" />
+	<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />	  
+  	<PackageReference Include="Microsoft.Extensions.Configuration" />	  
+  	<PackageReference Include="Pokok.BuildingBlocks.Messaging" />	  
+  	<PackageReference Include="Pokok.BuildingBlocks.Outbox" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Outbox\Migrations\" />
     <Folder Include="Properties\Persistence\Migrations\" />
   </ItemGroup>
 

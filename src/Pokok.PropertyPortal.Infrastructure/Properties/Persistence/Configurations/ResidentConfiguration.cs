@@ -16,7 +16,7 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurati
                    .HasForeignKey("PartyId")
                    .IsRequired();
 
-            builder.Property<int>("Role") // assuming ResidentRole is enum
+            builder.Property(r => r.Role)
                    .HasConversion<int>()
                    .IsRequired();
 

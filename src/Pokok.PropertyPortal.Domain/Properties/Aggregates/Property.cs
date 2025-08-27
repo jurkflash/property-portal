@@ -1,7 +1,6 @@
 ﻿using Pokok.BuildingBlocks.Domain.Abstractions;
 using Pokok.BuildingBlocks.Domain.Exceptions;
 using Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects;
-using Pokok.PropertyPortal.Domain.Events;
 using Pokok.PropertyPortal.Domain.Properties.Entities;
 using Pokok.PropertyPortal.Domain.Properties.ValueObjects;
 
@@ -14,6 +13,8 @@ namespace Pokok.PropertyPortal.Domain.Properties.Aggregates
 
         private readonly List<PropertyUnit> _units = new();
         public IReadOnlyCollection<PropertyUnit> Units => _units.AsReadOnly();
+
+        private Property() { } // For EF Core
 
         private Property(PropertyName propertyName, Address address) : base(PropertyId.New())
         {
@@ -37,7 +38,7 @@ namespace Pokok.PropertyPortal.Domain.Properties.Aggregates
                 throw new DomainException($"Unit {propertyUnit.UnitNumber.Value} already exists in this property.");
 
             _units.Add(propertyUnit);
-            AddDomainEvent(new UnitAddedDomainEvent(Id, propertyUnit.Id, propertyUnit.UnitNumber.Value));
+            //AddDomainEvent(new UnitAddedDomainEvent(Id, propertyUnit.Id, propertyUnit.UnitNumber.Value));
         }
 
         public void RemoveUnit(PropertyUnitId unitId)

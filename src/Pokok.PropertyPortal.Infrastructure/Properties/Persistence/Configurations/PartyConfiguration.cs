@@ -25,7 +25,7 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurati
                 ph.Property(x => x.Value).HasColumnName("Phone");
             });
 
-            builder.Property<int>("PartyType")
+            builder.Property(r => r.PartyType)
                    .HasConversion<int>()
                    .IsRequired();
 
