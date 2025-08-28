@@ -8,8 +8,8 @@ namespace Pokok.PropertyPortal.Domain.Residents
     public class Resident : Entity<ResidentId>
     {
         public Party Party { get; private set; }
-        public PhoneNumber? Phone { get; private set; }
-        public ResidentRole Role { get; private set; }
+        public PhoneNumber? PhoneNumber { get; private set; }
+        public ResidentRole ResidentRole { get; private set; }
 
         private Resident() { } // For EF Core
 
@@ -17,12 +17,12 @@ namespace Pokok.PropertyPortal.Domain.Residents
         : base(id)
         {
             Party = party ?? throw new DomainException("Party is required.");
-            Role = role;
-            Phone = phone;
+            ResidentRole = role;
+            PhoneNumber = phone;
         }
         public void UpdateRole(ResidentRole newRole)
         {
-            Role = newRole;
+            ResidentRole = newRole;
         }
     }
 }

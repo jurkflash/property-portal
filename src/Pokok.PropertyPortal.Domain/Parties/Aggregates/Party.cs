@@ -13,7 +13,7 @@ namespace Pokok.PropertyPortal.Domain.Parties.Aggregates
         public PartyName PartyName { get; private set; }
         public PartyType PartyType { get; private set; }
         public Email Email { get; private set; }
-        public PhoneNumber? Phone { get; private set; }
+        public PhoneNumber? PhoneNumber { get; private set; }
 
         private Party() { } // EF
 
@@ -22,7 +22,7 @@ namespace Pokok.PropertyPortal.Domain.Parties.Aggregates
         {
             PartyName = partyName ?? throw new DomainException("Party name is required.");
             Email = email ?? throw new DomainException("Party email is required.");
-            Phone = phone;
+            PhoneNumber = phone;
         }
 
         public static Party Register(PartyId id, PartyName name, PartyType type, Email email, PhoneNumber? phone = null)
@@ -34,7 +34,7 @@ namespace Pokok.PropertyPortal.Domain.Parties.Aggregates
 
         public void ChangePhoneNumber(PhoneNumber? newPhone)
         {
-            Phone = newPhone;
+            PhoneNumber = newPhone;
         }
     }
 }

@@ -9,11 +9,11 @@ using Pokok.PropertyPortal.Infrastructure.Outbox.Persistence;
 
 #nullable disable
 
-namespace Pokok.PropertyPortal.Infrastructure.Outbox.Migrations
+namespace Pokok.PropertyPortal.Infrastructure.Outbox.Persistence.Migrations
 {
     [DbContext(typeof(PropertyOutboxDbContext))]
-    [Migration("20250827155212_InitOutbox")]
-    partial class InitOutbox
+    [Migration("20250828165114_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

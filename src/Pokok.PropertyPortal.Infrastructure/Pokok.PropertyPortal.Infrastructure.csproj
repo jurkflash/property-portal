@@ -22,9 +22,4 @@
   	<PackageReference Include="Pokok.BuildingBlocks.Outbox" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Outbox\Migrations\" />
-    <Folder Include="Properties\Persistence\Migrations\" />
-  </ItemGroup>
-
 </Project>

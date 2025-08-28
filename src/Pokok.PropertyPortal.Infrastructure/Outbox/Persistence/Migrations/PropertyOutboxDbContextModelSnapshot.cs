@@ -8,7 +8,7 @@ using Pokok.PropertyPortal.Infrastructure.Outbox.Persistence;
 
 #nullable disable
 
-namespace Pokok.PropertyPortal.Infrastructure.Outbox.Migrations
+namespace Pokok.PropertyPortal.Infrastructure.Outbox.Persistence.Migrations
 {
     [DbContext(typeof(PropertyOutboxDbContext))]
     partial class PropertyOutboxDbContextModelSnapshot : ModelSnapshot

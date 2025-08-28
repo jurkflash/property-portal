@@ -37,7 +37,7 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurati
 
             builder.HasMany(p => p.Units)
                .WithOne()
-               .HasForeignKey("PropertyId")
+               .HasForeignKey(nameof(PropertyId))
                .OnDelete(DeleteBehavior.Cascade);
 
             // Optional: map table name

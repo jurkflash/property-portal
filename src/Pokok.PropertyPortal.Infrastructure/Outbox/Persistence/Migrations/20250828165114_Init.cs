@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Pokok.PropertyPortal.Infrastructure.Outbox.Migrations
+namespace Pokok.PropertyPortal.Infrastructure.Outbox.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitOutbox : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
