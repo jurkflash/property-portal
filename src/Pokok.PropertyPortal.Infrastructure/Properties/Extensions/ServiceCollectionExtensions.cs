@@ -14,7 +14,8 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Extensions
             services.AddDbContext<PropertyDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("PropertiesConnection")));
             services.AddScoped<PropertyDbContext>();
-            services.AddScoped<IPropertyRepository, PropertyRepository>();
+            services.AddScoped<IPropertyRepository>(sp =>
+                new PropertyRepository(sp.GetRequiredService<PropertyDbContext>()));
 
             return services;
         }
