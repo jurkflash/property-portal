@@ -4,11 +4,11 @@ using Pokok.PropertyPortal.Domain.Properties.Repositories;
 
 namespace Pokok.PropertyPortal.Application.Commands
 {
-    public sealed class AddPropertyCommandHandler : ICommandHandler<CreatePropertyCommand, Guid>
+    public sealed class CreatePropertyCommandHandler : ICommandHandler<CreatePropertyCommand, Guid>
     {
         private readonly IPropertyRepository _propertyRepository;
 
-        public AddPropertyCommandHandler(IPropertyRepository propertyRepository)
+        public CreatePropertyCommandHandler(IPropertyRepository propertyRepository)
         {
             _propertyRepository = propertyRepository;
         }
