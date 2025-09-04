@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Pokok.BuildingBlocks.Persistence.EfCore;
 using Pokok.PropertyPortal.Domain.Parties.Aggregates;
 using Pokok.PropertyPortal.Domain.Properties.Aggregates;
 using Pokok.PropertyPortal.Domain.Properties.Entities;
@@ -7,7 +8,7 @@ using Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurations;
 
 namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence
 {
-    public class PropertyDbContext : DbContext
+    public class PropertyDbContext : DbContextBase
     {
         public PropertyDbContext(DbContextOptions<PropertyDbContext> options)
             : base(options)

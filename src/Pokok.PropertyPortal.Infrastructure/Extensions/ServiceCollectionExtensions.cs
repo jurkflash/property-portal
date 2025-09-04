@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pokok.BuildingBlocks.Outbox;
 using Pokok.PropertyPortal.Infrastructure.Outbox.Persistence;
-using Pokok.PropertyPortal.Infrastructure.Properties.Extensions;
 
 namespace Pokok.PropertyPortal.Infrastructure.Extensions
 {
@@ -18,13 +17,6 @@ namespace Pokok.PropertyPortal.Infrastructure.Extensions
             services.Configure<OutboxOptions>(configuration.GetSection("Outbox"));
             services.AddOutboxProcessor<PropertyOutboxDbContext>();
 
-            return services;
-        }
-
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddProperties(configuration);
-            services.AddOutbox(configuration);
             return services;
         }
     }
