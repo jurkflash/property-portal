@@ -27,7 +27,7 @@ namespace Pokok.PropertyPortal.Domain.Properties.Aggregates
             var property = new Property(propertyName, address);
 
             // if you want an event for creation
-            // property.AddDomainEvent(new PropertyCreatedDomainEvent(property.Id, property.PropertyName.Value));
+            //property.AddDomainEvent(new PropertyCreated(property.Id, property.PropertyName.Value));
 
             return property;
         }

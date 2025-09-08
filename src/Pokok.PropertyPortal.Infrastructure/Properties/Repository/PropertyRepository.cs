@@ -1,4 +1,5 @@
-﻿using Pokok.BuildingBlocks.Persistence.Base;
+﻿using Microsoft.EntityFrameworkCore;
+using Pokok.BuildingBlocks.Persistence.Base;
 using Pokok.PropertyPortal.Domain.Properties.Aggregates;
 using Pokok.PropertyPortal.Domain.Properties.Entities;
 using Pokok.PropertyPortal.Domain.Properties.Repositories;
@@ -8,10 +9,11 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Repository
 {
     public sealed class PropertyRepository : RepositoryBase<Property>, IPropertyRepository
     {
-        private readonly List<Property> _properties = new();
+        private readonly PropertyDbContext _context;
 
         public PropertyRepository(PropertyDbContext context) : base(context)
         {
+            _context = context;
         }
 
         //public override Task AddAsync(Property property, CancellationToken cancellationToken = default)
@@ -20,9 +22,9 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Repository
         //    return Task.CompletedTask;
         //}
 
-        public Task<Property?> GetByIdAsync(PropertyId id, CancellationToken cancellationToken = default)
+        public async Task<Property?> GetByIdAsync(PropertyId id, CancellationToken cancellationToken = default)
         {
-            return Task.FromResult(_properties.FirstOrDefault(p => p.Id == id));
+            return await _context.Properties.FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
         }
 
         public Task<Property?> GetByNameAsync(string name, CancellationToken cancellationToken = default)
