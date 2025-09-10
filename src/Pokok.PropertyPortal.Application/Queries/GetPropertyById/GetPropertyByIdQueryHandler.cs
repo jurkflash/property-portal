@@ -2,7 +2,7 @@
 using Pokok.PropertyPortal.Domain.Properties.Aggregates;
 using Pokok.PropertyPortal.Domain.Properties.Repositories;
 
-namespace Pokok.PropertyPortal.Application.Queries
+namespace Pokok.PropertyPortal.Application.Queries.GetPropertyById
 {
     public sealed class GetPropertyByIdQueryHandler : IQueryHandler<GetPropertyByIdQuery, Property>
     {

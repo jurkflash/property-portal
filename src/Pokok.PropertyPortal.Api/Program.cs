@@ -3,11 +3,12 @@ using Pokok.BuildingBlocks.Cqrs.Events;
 using Pokok.BuildingBlocks.Cqrs.Extensions;
 using Pokok.BuildingBlocks.Messaging.Abstractions;
 using Pokok.BuildingBlocks.Messaging.RabbitMQ;
-using Pokok.BuildingBlocks.Persistence.Abstractions;
+using Pokok.PropertyPortal.Application.Commands.CreateProperty;
+using Pokok.PropertyPortal.Application.Commands.CreatePropertyUnit;
+using Pokok.PropertyPortal.Application.Queries.GetPropertyById;
 using Pokok.PropertyPortal.Domain.Properties.Aggregates;
+using Pokok.PropertyPortal.Domain.Properties.Entities;
 using Pokok.PropertyPortal.Infrastructure.Extensions;
-using Pokok.PropertyPortal.Infrastructure.Properties.Persistence;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,10 +20,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ICommandDispatcher, CommandDispatcher>();
-builder.Services.AddCommandHandler<Pokok.PropertyPortal.Application.Commands.CreatePropertyCommand, Guid, Pokok.PropertyPortal.Application.Commands.CreatePropertyCommandHandler>();
+builder.Services.AddCommandHandler<CreatePropertyCommand, PropertyId, CreatePropertyCommandHandler>();
+builder.Services.AddCommandHandler<CreatePropertyUnitCommand, PropertyUnitId, CreatePropertyUnitCommandHandler>();
 
 builder.Services.AddScoped<IQueryDispatcher, QueryDispatcher>();
-builder.Services.AddQueryHandler<Pokok.PropertyPortal.Application.Queries.GetPropertyByIdQuery, Property, Pokok.PropertyPortal.Application.Queries.GetPropertyByIdQueryHandler>();
+builder.Services.AddQueryHandler<GetPropertyByIdQuery, Property, GetPropertyByIdQueryHandler>();
 builder.Services.AddSingleton<IRabbitMQConnection, RabbitMQConnection>();
 builder.Services.AddSingleton<IMessagePublisher, RabbitMQMessagePublisher>();
 builder.Services.Configure<RabbitMQOptions>(builder.Configuration.GetSection("RabbitMQ"));

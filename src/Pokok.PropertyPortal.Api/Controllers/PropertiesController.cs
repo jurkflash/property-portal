@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Pokok.BuildingBlocks.Cqrs.Dispatching;
-using Pokok.PropertyPortal.Application.Commands;
 using Pokok.PropertyPortal.Api.Requests;
+using Pokok.PropertyPortal.Application.Commands;
+using Pokok.PropertyPortal.Application.Commands.CreateProperty;
+using Pokok.PropertyPortal.Application.Commands.CreatePropertyUnit;
+using Pokok.PropertyPortal.Application.Queries.GetPropertyById;
+using Pokok.PropertyPortal.Domain.Properties.Aggregates;
+using Pokok.PropertyPortal.Domain.Properties.Entities;
 using Pokok.PropertyPortal.Domain.Properties.ValueObjects;
 using SharedKernelAddress = Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects.Address;
-using Pokok.PropertyPortal.Application.Queries;
-using Pokok.PropertyPortal.Domain.Properties.Entities;
-using Pokok.PropertyPortal.Domain.Properties.Aggregates;
 
 namespace Pokok.PropertyPortal.Api.Controllers
 {
@@ -36,7 +39,7 @@ namespace Pokok.PropertyPortal.Api.Controllers
                     request.Country
                 )
             );
-            var propertyId = await _commandDispatcher.DispatchAsync<CreatePropertyCommand, Guid>(command);
+            var propertyId = await _commandDispatcher.DispatchAsync<CreatePropertyCommand, PropertyId>(command);
             return Ok(propertyId);
         }
 
@@ -51,6 +54,18 @@ namespace Pokok.PropertyPortal.Api.Controllers
                 return NotFound();
 
             return Ok(result);
+        }
+
+        [HttpPost("{id:guid}/units")]
+        public async Task<IActionResult> CreatePropertyUnit(Guid id, [FromBody] CreatePropertyUnitRequest request)
+        {
+            var command = new CreatePropertyUnitCommand(
+                new PropertyId(id),
+                new UnitNumber(request.UnitNumber)
+            );
+            var propertyUnitId = await _commandDispatcher.DispatchAsync<CreatePropertyUnitCommand, PropertyUnitId>(command);
+
+            return Ok(propertyUnitId.Value);
         }
     }
 }

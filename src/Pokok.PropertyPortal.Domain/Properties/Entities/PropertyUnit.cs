@@ -21,6 +21,12 @@ namespace Pokok.PropertyPortal.Domain.Properties.Entities
             UnitNumber = unitNumber;
         }
 
+        public static PropertyUnit Create(UnitNumber unitNumber)
+        {
+            if (unitNumber is null) throw new ArgumentNullException(nameof(unitNumber));
+            return new PropertyUnit(PropertyUnitId.New(), unitNumber);
+        }
+
         public Resident AssignParty(Party party, ResidentRole residentRole)
         {
             if (_residents.Any(r => r.Party.Email.Value.Equals(party.Email.Value, StringComparison.OrdinalIgnoreCase)))
