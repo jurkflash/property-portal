@@ -5,6 +5,7 @@ using Pokok.BuildingBlocks.Messaging.Abstractions;
 using Pokok.BuildingBlocks.Messaging.RabbitMQ;
 using Pokok.PropertyPortal.Application.Commands.CreateProperty;
 using Pokok.PropertyPortal.Application.Commands.CreatePropertyUnit;
+using Pokok.PropertyPortal.Application.Commands.RemovePropertyUnit;
 using Pokok.PropertyPortal.Application.Queries.GetPropertyById;
 using Pokok.PropertyPortal.Domain.Properties.Aggregates;
 using Pokok.PropertyPortal.Domain.Properties.Entities;
@@ -22,6 +23,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICommandDispatcher, CommandDispatcher>();
 builder.Services.AddCommandHandler<CreatePropertyCommand, PropertyId, CreatePropertyCommandHandler>();
 builder.Services.AddCommandHandler<CreatePropertyUnitCommand, PropertyUnitId, CreatePropertyUnitCommandHandler>();
+builder.Services.AddCommandHandler<RemovePropertyUnitCommand, bool, RemovePropertyUnitCommandHandler>();
 
 builder.Services.AddScoped<IQueryDispatcher, QueryDispatcher>();
 builder.Services.AddQueryHandler<GetPropertyByIdQuery, Property, GetPropertyByIdQueryHandler>();

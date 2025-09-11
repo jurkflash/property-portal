@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Pokok.BuildingBlocks.Cqrs.Dispatching;
 using Pokok.PropertyPortal.Api.Requests;
-using Pokok.PropertyPortal.Application.Commands;
 using Pokok.PropertyPortal.Application.Commands.CreateProperty;
 using Pokok.PropertyPortal.Application.Commands.CreatePropertyUnit;
+using Pokok.PropertyPortal.Application.Commands.RemovePropertyUnit;
 using Pokok.PropertyPortal.Application.Queries.GetPropertyById;
 using Pokok.PropertyPortal.Domain.Properties.Aggregates;
 using Pokok.PropertyPortal.Domain.Properties.Entities;
@@ -66,6 +65,18 @@ namespace Pokok.PropertyPortal.Api.Controllers
             var propertyUnitId = await _commandDispatcher.DispatchAsync<CreatePropertyUnitCommand, PropertyUnitId>(command);
 
             return Ok(propertyUnitId.Value);
+        }
+
+        [HttpDelete("{id:guid}/units/{unitId:guid}")]
+        public async Task<IActionResult> RemovePropertyUnit(Guid id, Guid unitId, [FromBody] CreatePropertyUnitRequest request)
+        {
+            var command = new RemovePropertyUnitCommand(
+                new PropertyId(id),
+                new PropertyUnitId(unitId)
+            );
+            await _commandDispatcher.DispatchAsync<RemovePropertyUnitCommand, bool>(command);
+
+            return NoContent();
         }
     }
 }
