@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Pokok.BuildingBlocks.Cqrs.Events;
 using Pokok.BuildingBlocks.Persistence;
 using Pokok.BuildingBlocks.Persistence.Abstractions;
+using Pokok.PropertyPortal.Domain.Parties.Repositories;
 using Pokok.PropertyPortal.Domain.Properties.Repositories;
 using Pokok.PropertyPortal.Infrastructure.Properties.Persistence;
 using Pokok.PropertyPortal.Infrastructure.Properties.Repository;
@@ -29,6 +30,7 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Extensions
             });
 
             services.AddScoped<IPropertyRepository, PropertyRepository>();
+            services.AddScoped<IPartyRepository, PartyRepository>();
 
             return services;
         }

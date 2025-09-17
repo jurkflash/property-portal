@@ -17,17 +17,16 @@ namespace Pokok.PropertyPortal.Domain.Parties.Aggregates
 
         private Party() { } // EF
 
-        private Party(PartyId id, PartyName partyName, PartyType partyType, Email email, PhoneNumber? phone = null)
-            : base(id)
+        private Party(PartyName partyName, PartyType partyType, Email email, PhoneNumber? phone = null) : base(PartyId.New())
         {
             PartyName = partyName ?? throw new DomainException("Party name is required.");
             Email = email ?? throw new DomainException("Party email is required.");
             PhoneNumber = phone;
         }
 
-        public static Party Register(PartyId id, PartyName name, PartyType type, Email email, PhoneNumber? phone = null)
+        public static Party Register(PartyName name, PartyType type, Email email, PhoneNumber? phone = null)
         {
-            var party = new Party(id, name, type, email, phone);
+            var party = new Party(name, type, email, phone);
             party.AddDomainEvent(new PartyRegistered(name, type, email));
             return party;
         }
