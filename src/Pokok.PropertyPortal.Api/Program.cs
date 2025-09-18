@@ -7,7 +7,9 @@ using Pokok.PropertyPortal.Application.Commands.CreateParty;
 using Pokok.PropertyPortal.Application.Commands.CreateProperty;
 using Pokok.PropertyPortal.Application.Commands.CreatePropertyUnit;
 using Pokok.PropertyPortal.Application.Commands.RemovePropertyUnit;
+using Pokok.PropertyPortal.Application.Queries.GetPartyById;
 using Pokok.PropertyPortal.Application.Queries.GetPropertyById;
+using Pokok.PropertyPortal.Domain.Parties.Aggregates;
 using Pokok.PropertyPortal.Domain.Parties.Entities;
 using Pokok.PropertyPortal.Domain.Properties.Aggregates;
 using Pokok.PropertyPortal.Domain.Properties.Entities;
@@ -30,6 +32,8 @@ builder.Services.AddCommandHandler<CreatePartyCommand, PartyId, CreatePartyComma
 
 builder.Services.AddScoped<IQueryDispatcher, QueryDispatcher>();
 builder.Services.AddQueryHandler<GetPropertyByIdQuery, Property, GetPropertyByIdQueryHandler>();
+builder.Services.AddQueryHandler<GetPartyByIdQuery, Party, GetPartyByIdQueryHandler>();
+
 builder.Services.AddSingleton<IRabbitMQConnection, RabbitMQConnection>();
 builder.Services.AddSingleton<IMessagePublisher, RabbitMQMessagePublisher>();
 builder.Services.Configure<RabbitMQOptions>(builder.Configuration.GetSection("RabbitMQ"));
