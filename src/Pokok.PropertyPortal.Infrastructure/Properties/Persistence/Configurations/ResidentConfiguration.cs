@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects;
+using Pokok.PropertyPortal.Domain.Parties.Aggregates;
 using Pokok.PropertyPortal.Domain.Residents;
 
 namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurations
@@ -29,10 +30,9 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurati
                    .HasConversion<int>()
                    .IsRequired();
 
-            // Resident owns a Party reference, store PartyId as FK
-            builder.HasOne(r => r.Party)
+            builder.HasOne<Party>()
                    .WithMany()
-                   .HasForeignKey("PartyId")
+                   .HasForeignKey(r => r.PartyId)
                    .IsRequired();
 
             builder.ToTable("Residents");

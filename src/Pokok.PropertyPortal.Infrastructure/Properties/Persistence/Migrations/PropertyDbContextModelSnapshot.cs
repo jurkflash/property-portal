@@ -85,7 +85,7 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Migrations
 
             modelBuilder.Entity("Pokok.PropertyPortal.Domain.Parties.Aggregates.Party", b =>
                 {
-                    b.OwnsOne("Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects.Email", "Email", b1 =>
+                    b.OwnsOne("Pokok.PropertyPortal.Domain.Parties.Aggregates.Party.Email#Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects.Email", "Email", b1 =>
                         {
                             b1.Property<Guid>("PartyId")
                                 .HasColumnType("uuid");
@@ -97,30 +97,13 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Migrations
 
                             b1.HasKey("PartyId");
 
-                            b1.ToTable("Parties");
+                            b1.ToTable("Parties", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("PartyId");
                         });
 
-                    b.OwnsOne("Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects.PhoneNumber", "PhoneNumber", b1 =>
-                        {
-                            b1.Property<Guid>("PartyId")
-                                .HasColumnType("uuid");
-
-                            b1.Property<string>("Value")
-                                .HasColumnType("text")
-                                .HasColumnName("PhoneNumber");
-
-                            b1.HasKey("PartyId");
-
-                            b1.ToTable("Parties");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PartyId");
-                        });
-
-                    b.OwnsOne("Pokok.PropertyPortal.Domain.Parties.ValueObjects.PartyName", "PartyName", b1 =>
+                    b.OwnsOne("Pokok.PropertyPortal.Domain.Parties.Aggregates.Party.PartyName#Pokok.PropertyPortal.Domain.Parties.ValueObjects.PartyName", "PartyName", b1 =>
                         {
                             b1.Property<Guid>("PartyId")
                                 .HasColumnType("uuid");
@@ -132,7 +115,24 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Migrations
 
                             b1.HasKey("PartyId");
 
-                            b1.ToTable("Parties");
+                            b1.ToTable("Parties", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("PartyId");
+                        });
+
+                    b.OwnsOne("Pokok.PropertyPortal.Domain.Parties.Aggregates.Party.PhoneNumber#Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects.PhoneNumber", "PhoneNumber", b1 =>
+                        {
+                            b1.Property<Guid>("PartyId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<string>("Value")
+                                .HasColumnType("text")
+                                .HasColumnName("PhoneNumber");
+
+                            b1.HasKey("PartyId");
+
+                            b1.ToTable("Parties", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("PartyId");
@@ -149,7 +149,7 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Migrations
 
             modelBuilder.Entity("Pokok.PropertyPortal.Domain.Properties.Aggregates.Property", b =>
                 {
-                    b.OwnsOne("Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects.Address", "Address", b1 =>
+                    b.OwnsOne("Pokok.PropertyPortal.Domain.Properties.Aggregates.Property.Address#Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects.Address", "Address", b1 =>
                         {
                             b1.Property<Guid>("PropertyId")
                                 .HasColumnType("uuid");
@@ -181,13 +181,13 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Migrations
 
                             b1.HasKey("PropertyId");
 
-                            b1.ToTable("Properties");
+                            b1.ToTable("Properties", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("PropertyId");
                         });
 
-                    b.OwnsOne("Pokok.PropertyPortal.Domain.Properties.ValueObjects.PropertyName", "PropertyName", b1 =>
+                    b.OwnsOne("Pokok.PropertyPortal.Domain.Properties.Aggregates.Property.PropertyName#Pokok.PropertyPortal.Domain.Properties.ValueObjects.PropertyName", "PropertyName", b1 =>
                         {
                             b1.Property<Guid>("PropertyId")
                                 .HasColumnType("uuid");
@@ -200,7 +200,7 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Migrations
 
                             b1.HasKey("PropertyId");
 
-                            b1.ToTable("Properties");
+                            b1.ToTable("Properties", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("PropertyId");
@@ -220,7 +220,7 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Migrations
                         .HasForeignKey("PropertyId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.OwnsOne("Pokok.PropertyPortal.Domain.Properties.ValueObjects.UnitNumber", "UnitNumber", b1 =>
+                    b.OwnsOne("Pokok.PropertyPortal.Domain.Properties.Entities.PropertyUnit.UnitNumber#Pokok.PropertyPortal.Domain.Properties.ValueObjects.UnitNumber", "UnitNumber", b1 =>
                         {
                             b1.Property<Guid>("PropertyUnitId")
                                 .HasColumnType("uuid");
@@ -232,7 +232,7 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Migrations
 
                             b1.HasKey("PropertyUnitId");
 
-                            b1.ToTable("PropertyUnits");
+                            b1.ToTable("PropertyUnits", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("PropertyUnitId");
@@ -255,7 +255,7 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Migrations
                         .HasForeignKey("PropertyUnitId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.OwnsOne("Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects.PhoneNumber", "PhoneNumber", b1 =>
+                    b.OwnsOne("Pokok.PropertyPortal.Domain.Residents.Resident.PhoneNumber#Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects.PhoneNumber", "PhoneNumber", b1 =>
                         {
                             b1.Property<Guid>("ResidentId")
                                 .HasColumnType("uuid");
@@ -268,7 +268,7 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Migrations
 
                             b1.HasKey("ResidentId");
 
-                            b1.ToTable("Residents");
+                            b1.ToTable("Residents", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("ResidentId");
