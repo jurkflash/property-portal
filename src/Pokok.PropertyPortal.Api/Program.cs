@@ -41,7 +41,6 @@ builder.Services.Configure<RabbitMQOptions>(builder.Configuration.GetSection("Ra
 ServiceCollectionExtensions.AddOutbox(builder.Services, builder.Configuration);
 Pokok.PropertyPortal.Infrastructure.Properties.Extensions.ServiceCollectionExtensions.AddProperties(builder.Services, builder.Configuration);
 
-
 //**********
 builder.Services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
 ////builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -54,8 +53,7 @@ builder.Services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
 //});
 //*********
 
-
-
+builder.Services.AddHealthChecks();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -65,10 +63,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseExceptionHandler("/error"); // You can create an ErrorController for this route
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHealthChecks("/health");
 
 app.Run();
