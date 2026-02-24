@@ -10,6 +10,9 @@ namespace Pokok.PropertyPortal.Domain.Parties.Aggregates
 {
     public class Party : AggregateRoot<PartyId>
     {
+        public SsoStatus SsoStatus { get; private set; } = SsoStatus.Pending;
+        public string SsoFailedMessage { get; private set; }
+        public Guid? SsoUserId { get; private set; }
         public PartyName PartyName { get; private set; }
         public PartyType PartyType { get; private set; }
         public Email Email { get; private set; }
@@ -34,6 +37,18 @@ namespace Pokok.PropertyPortal.Domain.Parties.Aggregates
         public void ChangePhoneNumber(PhoneNumber? newPhone)
         {
             PhoneNumber = newPhone;
+        }
+
+        public void MarkSsoCreated(Guid ssoUserId)
+        {
+            SsoUserId = ssoUserId;
+            SsoStatus = SsoStatus.Created;
+        }
+
+        public void MarkSsoFailed(string reason)
+        {
+            SsoStatus = SsoStatus.Failed;
+            SsoFailedMessage = reason;
         }
     }
 }

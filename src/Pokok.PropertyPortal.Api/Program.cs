@@ -1,19 +1,23 @@
 using Pokok.BuildingBlocks.Cqrs.Dispatching;
 using Pokok.BuildingBlocks.Cqrs.Events;
 using Pokok.BuildingBlocks.Cqrs.Extensions;
+using Pokok.BuildingBlocks.Domain.Events;
 using Pokok.BuildingBlocks.Messaging.Abstractions;
 using Pokok.BuildingBlocks.Messaging.RabbitMQ;
 using Pokok.PropertyPortal.Application.Commands.CreateParty;
 using Pokok.PropertyPortal.Application.Commands.CreateProperty;
 using Pokok.PropertyPortal.Application.Commands.CreatePropertyUnit;
 using Pokok.PropertyPortal.Application.Commands.RemovePropertyUnit;
+using Pokok.PropertyPortal.Application.DomainEventHandlers;
 using Pokok.PropertyPortal.Application.Queries.GetPartyById;
 using Pokok.PropertyPortal.Application.Queries.GetPropertyById;
 using Pokok.PropertyPortal.Domain.Parties.Aggregates;
 using Pokok.PropertyPortal.Domain.Parties.Entities;
+using Pokok.PropertyPortal.Domain.Parties.Events;
 using Pokok.PropertyPortal.Domain.Properties.Aggregates;
 using Pokok.PropertyPortal.Domain.Properties.Entities;
 using Pokok.PropertyPortal.Infrastructure.Extensions;
+using Pokok.PropertyPortal.Infrastructure.Identity.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,11 +42,13 @@ builder.Services.AddSingleton<IRabbitMQConnection, RabbitMQConnection>();
 builder.Services.AddSingleton<IMessagePublisher, RabbitMQMessagePublisher>();
 builder.Services.Configure<RabbitMQOptions>(builder.Configuration.GetSection("RabbitMQ"));
 
-ServiceCollectionExtensions.AddOutbox(builder.Services, builder.Configuration);
+//Pokok.PropertyPortal.Infrastructure.Extensions.ServiceCollectionExtensions.AddOutbox(builder.Services, builder.Configuration);
 Pokok.PropertyPortal.Infrastructure.Properties.Extensions.ServiceCollectionExtensions.AddProperties(builder.Services, builder.Configuration);
+Pokok.PropertyPortal.Infrastructure.Identity.Extensions.ServiceCollectionExtensions.AddIdentity(builder.Services, builder.Configuration);
 
 //**********
 builder.Services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
+builder.Services.AddScoped<IDomainEventHandler<PartyRegistered>, PartyRegisteredEventHandler<PartyRegistered>>();
 ////builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //// Register UnitOfWork
 //builder.Services.AddScoped<IUnitOfWork, UnitOfWorkBase>(sp =>

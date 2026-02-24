@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Pokok.BuildingBlocks.Domain.SharedKernel.ValueObjects;
 using Pokok.PropertyPortal.Domain.Parties.Aggregates;
 using Pokok.PropertyPortal.Domain.Parties.Entities;
+using Pokok.PropertyPortal.Domain.Parties.Enums;
 using Pokok.PropertyPortal.Domain.Parties.ValueObjects;
 
 namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurations
@@ -37,6 +38,18 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Persistence.Configurati
             builder.Property(r => r.PartyType)
                    .HasConversion<int>()
                    .IsRequired();
+
+            builder.Property(p => p.SsoStatus)
+                   .HasConversion<int>()
+                   .HasDefaultValue(SsoStatus.Pending)
+                   .IsRequired();
+
+            builder.Property(p => p.SsoUserId)
+                   .IsRequired(false);
+
+            builder.Property(p => p.SsoFailedMessage)
+                   .HasMaxLength(500)
+                   .IsRequired(false);
 
             builder.ToTable("Parties");
         }
