@@ -47,8 +47,8 @@ Pokok.PropertyPortal.Infrastructure.Properties.Extensions.ServiceCollectionExten
 Pokok.PropertyPortal.Infrastructure.Identity.Extensions.ServiceCollectionExtensions.AddIdentity(builder.Services, builder.Configuration);
 
 //**********
-builder.Services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
-builder.Services.AddScoped<IDomainEventHandler<PartyRegistered>, PartyRegisteredEventHandler<PartyRegistered>>();
+builder.Services.AddDomainEventDispatcher();
+builder.Services.AddScoped<IDomainEventHandler<PartyRegisteredEvent>, PartyRegisteredEventHandler>();
 ////builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //// Register UnitOfWork
 //builder.Services.AddScoped<IUnitOfWork, UnitOfWorkBase>(sp =>

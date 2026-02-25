@@ -24,8 +24,8 @@ namespace Pokok.PropertyPortal.Infrastructure.Properties.Extensions
             services.AddScoped<IUnitOfWork>(sp =>
             {
                 var dbContext = sp.GetRequiredService<PropertyDbContext>();
-                var dispatcher = sp.GetService<IDomainEventDispatcher>(); // may be null
-                var loggger = sp.GetService<ILogger<UnitOfWork<PropertyDbContext>>>();
+                var dispatcher = sp.GetRequiredService<IDomainEventDispatcher>(); // may be null
+                var loggger = sp.GetRequiredService<ILogger<UnitOfWork<PropertyDbContext>>>();
                 return new UnitOfWork<PropertyDbContext>(dbContext, dispatcher, loggger);
             });
 

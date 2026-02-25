@@ -24,8 +24,4 @@
   	<PackageReference Include="Microsoft.Extensions.Http" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Identity\Models\" />
-  </ItemGroup>
-
 </Project>

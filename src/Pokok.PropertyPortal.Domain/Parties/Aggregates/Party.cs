@@ -30,7 +30,7 @@ namespace Pokok.PropertyPortal.Domain.Parties.Aggregates
         public static Party Register(PartyName name, PartyType type, Email email, PhoneNumber? phone = null)
         {
             var party = new Party(name, type, email, phone);
-            party.AddDomainEvent(new PartyRegistered(name, type, email));
+            party.AddDomainEvent(new PartyRegisteredEvent(party.Id, name, type, email));
             return party;
         }
 

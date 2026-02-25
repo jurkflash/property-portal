@@ -1,10 +1,11 @@
-﻿using Microsoft.Extensions.Options;
-using Pokok.PropertyPortal.Application.Services;
+﻿using Pokok.PropertyPortal.Application.Services;
+using Pokok.PropertyPortal.Infrastructure.Identity.Models;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 namespace Pokok.PropertyPortal.Infrastructure.Identity.Services
 {
-    public sealed class IdentityUserService : IIdentityService
+    internal sealed class IdentityUserService : IIdentityService
     {
         private readonly HttpClient _httpClient;
         private readonly IIdentityTokenService _tokenService;
@@ -20,7 +21,19 @@ namespace Pokok.PropertyPortal.Infrastructure.Identity.Services
             var token = await _tokenService.GetAccessTokenAsync(cancellationToken);
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-            throw new NotImplementedException();
+            var request = new ProvisionUserRequest
+            {
+                Email = email,
+                DisplayName = name
+            };
+
+            var response = await _httpClient.PostAsJsonAsync("api/users", request, cancellationToken);
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadFromJsonAsync<ProvisionUserResponse>(cancellationToken: cancellationToken);
+
+            return result?.UserId
+                ?? throw new InvalidOperationException("Identity server did not return a user ID.");
         }
     }
 }
